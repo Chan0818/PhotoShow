@@ -22,13 +22,14 @@
           {{ item.name }}
       </li>
       <m-popup v-model="isOpenPopup">
-        <div>测试内容</div>
+        <menu-vue :categorys="data" @onItemClick="onItemClick"></menu-vue>
       </m-popup>
     </ul>
   </div>
 </template>
 
 <script setup>
+import menuVue from '@/views/main/component/menu/index.vue'
 import { ref, watch, onBeforeUpdate } from 'vue'
 import { useScroll } from '@vueuse/core'
 defineProps({
