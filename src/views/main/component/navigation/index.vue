@@ -10,11 +10,14 @@ import mobileNavigationVue from './mobile/index.vue'
 import pcNavigationVue from './pc/index.vue'
 import {isMobileTerminal} from '@/utils/flexible'
 import { getCategory } from '@/api/category'
+import { ALL_CATEGORY_ITEM } from '@/constants'
 
 const categoryDate = ref([])
 const getCategoryData = async ()=>{
   const {categorys} = await getCategory()
+  categorys.unshift(ALL_CATEGORY_ITEM)
   categoryDate.value = categorys
+
 }
 getCategoryData()
 </script>

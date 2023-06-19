@@ -16,6 +16,7 @@
       <li v-for="(item,index) in data" :key="item.id"
           :ref="setItemRef"
           @click="onItemClick(index)"
+          :class="{ 'text-zinc-200': currentCategoryIndex === index}"
           class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4">
           {{ item.name }}
       </li>
@@ -55,13 +56,19 @@ const {x:ulScrollLeft} = useScroll(ulTarget)
 watch(currentCategoryIndex,(val)=>{
   //获取选中元素的left,width
   const { left,width } = itemRefs[val].getBoundingClientRect()
-  //sliderstyle
+  //sliderstyle的设置
   sliderStyle.value = {
     //ul+left
     transform:`translateX(${ulScrollLeft.value + left - 10 +'px'})`,
     width:width +'px'
   }
 })
+/**
+ * 获得当前分类的下标
+ */
+const onItemClick = (index)=>{
+  currentCategoryIndex.value = index
+}
 
 </script>
 <style scoped lang='scss'>
