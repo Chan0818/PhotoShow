@@ -11,6 +11,7 @@
       <li
         class="z-20 bg-white fixed top-0 right-[-1px] 
          h-4 px-1 flex items-center shadow-l-white"
+         @click="isOpenPopup = !isOpenPopup"
       ><m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon></li>
       <!-- categoryitem -->
       <li v-for="(item,index) in data" :key="item.id"
@@ -20,6 +21,9 @@
           class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4">
           {{ item.name }}
       </li>
+      <m-popup v-model="isOpenPopup">
+        <div>测试内容</div>
+      </m-popup>
     </ul>
   </div>
 </template>
@@ -69,6 +73,8 @@ watch(currentCategoryIndex,(val)=>{
 const onItemClick = (index)=>{
   currentCategoryIndex.value = index
 }
+//popup展示
+const isOpenPopup = ref(false)
 
 </script>
 <style scoped lang='scss'>
