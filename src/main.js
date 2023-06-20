@@ -5,6 +5,7 @@ import './styles/index.scss'
 import { useREM } from './utils/flexible'
 import mLibs from './libs'
 import 'virtual:svg-icons-register'
+import store from './store'
 
-createApp(App).use(mLibs).use(router).mount('#app')
+createApp(App).use(mLibs).use(router).use(store).mount('#app')
 useREM()

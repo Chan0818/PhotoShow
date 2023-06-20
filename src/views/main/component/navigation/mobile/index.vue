@@ -14,7 +14,7 @@
          @click="isOpenPopup = !isOpenPopup"
       ><m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon></li>
       <!-- categoryitem -->
-      <li v-for="(item,index) in data" :key="item.id"
+      <li v-for="(item,index) in $store.getters.categorys" :key="item.id"
           :ref="setItemRef"
           @click="onItemClick(index)"
           :class="{ 'text-zinc-200': currentCategoryIndex === index}"
@@ -32,12 +32,7 @@
 import menuVue from '@/views/main/component/menu/index.vue'
 import { ref, watch, onBeforeUpdate } from 'vue'
 import { useScroll } from '@vueuse/core'
-defineProps({
-  data:{
-    type:Array,
-    required:true
-  }
-})
+
 //滑块处理
   const sliderStyle = ref({
     transform:'translateX(0px)',
