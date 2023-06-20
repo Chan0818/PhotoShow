@@ -1,6 +1,6 @@
 <template>
   <div class="w-full px-2 py-1 border-b border-b-zinc-200
-  bg-white">
+  bg-white dark:bg-zinc-800  dark:border-b-zinc-700">
     <div class="flex items-center">
       <img 
       @click="onToHome"

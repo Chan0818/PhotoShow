@@ -22,7 +22,7 @@
           {{ item.name }}
       </li>
       <m-popup v-model="isOpenPopup">
-        <menu-vue :categorys="data" @onItemClick="onItemClick"></menu-vue>
+        <menu-vue  @onItemClick="onItemClick"></menu-vue>
       </m-popup>
     </ul>
   </div>
