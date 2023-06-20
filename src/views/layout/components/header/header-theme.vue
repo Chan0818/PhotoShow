@@ -4,21 +4,21 @@
       <m-svg-icon
       name="theme-light"
       class="p-1 w-4 h-4 rounded-sm cursor-pointer outline-none
-      hover:bg-zinc-100/60"
-      fillClass="fill-zinc-900">
+      hover:bg-zinc-100/60 dark:hover:bg-zinc-900"
+      fillClass="fill-zinc-900 dark:fill-zinc-300">
       </m-svg-icon>
     </template>
     <div class="overflow-hidden w-[140px]">
       <div
       :key="item.id"
       v-for="item in themeArr"
-      class="flex items-center p-1 rounded cursor-pointer hover:bg-zinc-100/60">
+      class="flex items-center p-1 rounded cursor-pointer hover:bg-zinc-100/60 dark:hover:bg-zinc-800">
         <m-svg-icon
         :name="item.icon"
         class="mr-1 w-1.5 h-1.5"
-        fillClass="fill-zinc-900"
+        fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
-        <span class="text-sm text-zinc-800">{{ item.name }}</span>
+        <span class="text-sm text-zinc-800 dark:text-zinc-300">{{ item.name }}</span>
       </div>
     </div>
   </m-popover>

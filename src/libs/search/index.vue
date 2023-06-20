@@ -15,7 +15,8 @@
           class="block w-full h-[44px] pl-4 outline-0 rounded-xl
           text-sm text-zinc-900 bg-zinc-100 caret-zinc-400
           duration-500 group-hover:bg-white group-hover:border-zinc-200
-          focus:border-red-300 tracking-wide"
+          focus:border-red-300 tracking-wide dark:bg-zinc-800 
+          dark:text-zinc-200 dark:border-zinc-700"
           placeholder="搜索"
           v-model="inputValue"
           >
@@ -43,7 +44,8 @@
           v-if="$slots.dropdown"
           v-show="isFocus"
           class="absolute left-0 top-[56px] w-full max-h-[368px] border-zinc-200
-          rounded p-2 overflow-auto text-base bg-white duration-200 hover:shadow-2xl z-20">
+          rounded p-2 overflow-auto text-base bg-white duration-200 hover:shadow-2xl z-20
+          dark:bg-zinc-800 dark:border-zinc-600">
               <slot name="dropdown" />
           </div>
       </transition>

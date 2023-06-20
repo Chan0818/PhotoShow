@@ -13,7 +13,7 @@
         <!-- 内容 -->
         <transition name="popup-down-up">
             <div v-if="isOpen" v-bind="$attrs"
-            class="fixed bottom-0 w-screen z-50 bg-white">
+            class="fixed bottom-0 w-screen z-50 bg-white dark:bg-zinc-800">
                 <slot />
             </div>
         </transition>
