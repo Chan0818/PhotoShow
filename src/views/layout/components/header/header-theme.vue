@@ -2,7 +2,7 @@
   <m-popover>
     <template #reference>
       <m-svg-icon
-      name="theme-light"
+      :name="svgIconName"
       class="p-1 w-4 h-4 rounded-sm cursor-pointer outline-none
       hover:bg-zinc-100/60 dark:hover:bg-zinc-900"
       fillClass="fill-zinc-900 dark:fill-zinc-300">
@@ -10,6 +10,7 @@
     </template>
     <div class="overflow-hidden w-[140px]">
       <div
+      @click="onItemClick(item)"
       :key="item.id"
       v-for="item in themeArr"
       class="flex items-center p-1 rounded cursor-pointer hover:bg-zinc-100/60 dark:hover:bg-zinc-800">
@@ -27,6 +28,8 @@
 <script setup>
 
 import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/constants'
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 // 构建渲染数据源
 const themeArr = [
@@ -49,6 +52,20 @@ const themeArr = [
     name: '跟随系统'
   }
 ]
+const store = useStore()
+/**
+ * 切换主题
+ */
+const onItemClick = (theme)=>{
+  store.commit('theme/changeThemeType',theme.type)
+}
+//控制图标展示
+const svgIconName = computed(()=>{
+  const findTheme =themeArr.find((theme)=>{
+  return theme.type === store.getters.themeType
+})
+  return findTheme.icon
+})
 
 </script>
 <style scoped lang='scss'>

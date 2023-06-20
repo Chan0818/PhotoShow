@@ -1,5 +1,5 @@
 <template>
-  <navigation-vue></navigation-vue>
+  <navigation-vue class="duration-500"></navigation-vue>
   <!-- <div>我是main下的布局</div> -->
 </template>
 
