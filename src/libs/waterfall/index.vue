@@ -10,7 +10,7 @@
     <template v-if="columnWidth && data.length">
       <!-- 通过动态的 style 来去计算对应的列宽、left、top -->
       <div
-        class=" absolute duration-300"
+        class="m-waterfall-item absolute duration-300"
         :style="{
           width: columnWidth + 'px',
           left: item._style?.left + 'px',
@@ -60,7 +60,7 @@ const props = defineProps({
   },
   // 行间距
   rowSpacing: {
-    default: 60,
+    default: 20,
     type: Number
   },
   // 是否需要进行图片预读取
@@ -121,7 +121,7 @@ let itemHeights = []
 /**
  * 监听图片加载完成
  */
-const waitImgComplate = async () => {
+const waitImgComplate = () => {
   itemHeights = []
   // 拿到所有元素
   let itemElements = [...document.getElementsByClassName('m-waterfall-item')]
@@ -129,14 +129,17 @@ const waitImgComplate = async () => {
   const imgElements = getImgElements(itemElements)
   // 获取所有 img 标签的图片
   const allImgs = getAllImg(imgElements)
-  await onComplateImgs(allImgs).then(() => {
+  onComplateImgs(allImgs).then(() => {
     // 图片加载完成，获取高度
-    itemElements.forEach((el) => {
+    console.dir(itemElements);
+  }).catch(()=>{
+    console.log('我失败了');
+  })
+  itemElements.forEach((el) => {
       itemHeights.push(el.offsetHeight)
     })
     // 渲染位置
     useItemLocation()
-  })
 }
 
 /**
@@ -215,6 +218,7 @@ watch(
         // 构建高度记录容器
         useColumnHeightObj()
       }
+
     nextTick(() => {
       if (props.picturePreReading) {
         waitImgComplate()

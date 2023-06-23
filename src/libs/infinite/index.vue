@@ -47,14 +47,11 @@ const targetIsIntersecting = ref(false)
 
 useIntersectionObserver(
   laodingTarget,
-  ([{ isIntersecting }], observerElement) => {
-
-      console.log('onLoad')
+  ([{ isIntersecting }]) => {
     // 获取当前交叉状态
     targetIsIntersecting.value = isIntersecting
       // 触发加载更多行为
       emitLoad()
-    
   }
 )
 
@@ -63,14 +60,14 @@ useIntersectionObserver(
  */
  const emitLoad = () => {
    // 当加载更多的视图可见时，加载更多数据
-  setTimeout(()=>{
     if (targetIsIntersecting.value && !loading.value && !props.isFinished) {
       // 修改加载数据标记
       loading.value = true
       // 触发加载更多行为
+      console.log('onLoad')
       emits('onLoad')
+  
     }
-  },2000)
 }
 
 /**
@@ -78,7 +75,9 @@ useIntersectionObserver(
  */
  watch(loading, () => {
   // 触发 load，延迟处理，等待 渲染和 useIntersectionObserver 的再次触发
-   emitLoad()
+   setTimeout(()=>{
+    emitLoad()
+   },100)
 })
 
 </script>

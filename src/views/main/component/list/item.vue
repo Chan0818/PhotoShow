@@ -2,9 +2,9 @@
   <div
     class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1 "
   >
-    <div class="m-waterfall-item relative w-full rounded cursor-zoom-in group">
+    <div class="relative w-full rounded cursor-zoom-in group">
       <!-- :src="data.photo" -->
-      <img class="w-full rounded bg-transparent" :src="data.photo"
+      <img v-lazy class="w-full rounded bg-transparent" :src="data.photo"
           :style="{height: (width / data.photoWidth) * data.photoHeight + 'px'}"
       />
       <!-- 遮罩层 -->
@@ -50,6 +50,7 @@
 </template>
 
 <script setup>
+import {randomRGB} from '@/utils/color.js'
 defineProps({
   data: {
     type: Object,
