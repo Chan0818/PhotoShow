@@ -1,5 +1,5 @@
 import { defineAsyncComponent } from 'vue'
-
+export {confirm} from './confirm/index'
 
 export default {
     install(app){

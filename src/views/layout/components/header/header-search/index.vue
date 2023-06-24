@@ -14,6 +14,8 @@
           @itemClick="onSearchHandler"
           >
           </history-vue>
+          <!-- 热门精选 -->
+          <theme-vue v-show="!inputValue"></theme-vue>
         </div>
       </template>
     </m-search>
@@ -24,6 +26,7 @@
 import { ref } from 'vue';
 import hintVue from './hint.vue';
 import historyVue from './history.vue';
+import themeVue from './theme.vue';
 import { useStore } from 'vuex';
 const store = useStore()
 const inputValue = ref('')
@@ -33,6 +36,8 @@ const onSearchHandler = (val) => {
   if(val){
     store.commit('search/addHistory',val)
   }
+  //触发searchText的变化
+  store.commit('app/changeSearchText',val)
 }
 
 </script>

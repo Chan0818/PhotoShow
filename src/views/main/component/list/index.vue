@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { ref,watch } from 'vue'
+import { ref, watch } from 'vue'
 import { getPexelsList } from '@/api/pexels'
 import itemVue from './item.vue'
 import { isMobileTerminal } from '@/utils/flexible'
@@ -29,7 +29,7 @@ const store = useStore()
 /**
  * 构建数据请求
  */
- let query = {
+let query = {
   page: 1,
   size: 20
 }
@@ -52,7 +52,7 @@ const getPexelsData = async () => {
   if (pexelsList.value.length) {
     query.page += 1
   }
-  console.log(query.page);
+  console.log(query.page)
   // if( query.page === 3 ){ query.page=1 }
   // 触发接口请求
   const res = await getPexelsList(query)
@@ -72,7 +72,7 @@ const getPexelsData = async () => {
 /**
  * 通过此方法修改 query 请求参数，重新发起请求
  */
- const resetQuery = (newQuery) => {
+const resetQuery = (newQuery) => {
   query = { ...query, ...newQuery }
   // 重置状态
   isFinished.value = false
@@ -92,6 +92,18 @@ watch(
     })
   }
 )
-
+/**
+ * 监听搜索内容项的变化
+ */
+watch(
+  () => store.getters.searchText,
+  (val) => {
+    // 重置请求参数
+    resetQuery({
+      page: 1,
+      searchText: val
+    })
+  }
+)
 </script>
 <style scoped lang="scss"></style>
