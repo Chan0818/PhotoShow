@@ -26,8 +26,8 @@
       text-zinc-900 font-bold leading-4 cursor-pointer 
        hover:bg-zinc-200 rounded dark:text-zinc-500 dark:hover:text-zinc-300
        dark:hover:bg-zinc-900"
-       @click="onItemClick(index)"
-       :class="{'text-zinc-900 bg-zinc-200 dark:text-zinc-300 dark:bg-zinc-900': currentCategoryIndex === index}"
+       @click="onItemClick(item)"
+       :class="{'text-zinc-900 bg-zinc-200 dark:text-zinc-300 dark:bg-zinc-900': $store.getters.currentCategoryIndex === index}"
       >{{ item.name }}</li>
     </ul>
   </div>
@@ -35,6 +35,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore()
 /**
  * 状态切换处理
  */
@@ -45,9 +47,8 @@ const triggerState = () => {
 /**
  * 选中状态处理
  */
- const currentCategoryIndex = ref(0)
-const onItemClick = (index) => {
-  currentCategoryIndex.value = index
+const onItemClick = (item) => {
+  store.commit('app/changeCurrentCategory',item)
 }
 
 

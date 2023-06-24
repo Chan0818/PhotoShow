@@ -4,8 +4,8 @@
     dark:text-zinc-200">所有分类</h2>
     <ul class="overflow-y-scroll">
         <li
-        v-for="(item,index) in categorys"
-        @click="$emit('onItemClick',index)"
+        v-for="(item,index) in $store.getters.categorys"
+        @click="$emit('onItemClick',item)"
         :key="item.id"
         class="px-1 py-1.5 text-lg text-zinc-900 active:bg-zinc-100
             duration-100 dark:text-zinc-300 active:dark:bg-zinc-900"

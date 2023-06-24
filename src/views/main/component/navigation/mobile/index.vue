@@ -17,8 +17,8 @@
       <!-- categoryitem -->
       <li v-for="(item,index) in $store.getters.categorys" :key="item.id"
           :ref="setItemRef"
-          @click="onItemClick(index)"
-          :class="{ 'text-zinc-200': currentCategoryIndex === index}"
+          @click="onItemClick(item)"
+          :class="{ 'text-zinc-200': $store.getters.currentCategoryIndex === index}"
           class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4">
           {{ item.name }}
       </li>
@@ -33,6 +33,8 @@
 import menuVue from '@/views/main/component/menu/index.vue'
 import { ref, watch, onBeforeUpdate } from 'vue'
 import { useScroll } from '@vueuse/core'
+import { useStore } from 'vuex';
+const store = useStore()
 
 //滑块处理
   const sliderStyle = ref({
@@ -40,7 +42,7 @@ import { useScroll } from '@vueuse/core'
     width:'52px'
   })
   //选中的item下标
-  const currentCategoryIndex =ref(0)
+  // const currentCategoryIndex =ref(0)
   //获取填充的所有item元素
   let itemRefs = []
   const setItemRef = (el) => {
@@ -54,7 +56,7 @@ import { useScroll } from '@vueuse/core'
 //获取ul元素,以计算偏移量
 const ulTarget = ref(null)
 const {x:ulScrollLeft} = useScroll(ulTarget)
-watch(currentCategoryIndex,(val)=>{
+watch(()=>store.getters.currentCategoryIndex,(val)=>{
   //获取选中元素的left,width
   const { left,width } = itemRefs[val].getBoundingClientRect()
   //sliderstyle的设置
@@ -64,14 +66,16 @@ watch(currentCategoryIndex,(val)=>{
     width:width +'px'
   }
 })
+//popup展示
+const isOpenPopup = ref(false)
 /**
  * 获得当前分类的下标
  */
-const onItemClick = (index)=>{
-  currentCategoryIndex.value = index
+const onItemClick = (item)=>{
+  store.commit('app/changeCurrentCategory',item)
+  isOpenPopup.value = false
 }
-//popup展示
-const isOpenPopup = ref(false)
+
 
 </script>
 <style scoped lang='scss'>
