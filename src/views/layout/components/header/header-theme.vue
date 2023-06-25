@@ -4,7 +4,7 @@
       <m-svg-icon
       :name="svgIconName"
       class="p-1 w-4 h-4 rounded-sm cursor-pointer outline-none
-      hover:bg-zinc-100/60 dark:hover:bg-zinc-900"
+      hover:bg-zinc-100/60 dark:hover:bg-zinc-900 guide-theme"
       fillClass="fill-zinc-900 dark:fill-zinc-300">
       </m-svg-icon>
     </template>

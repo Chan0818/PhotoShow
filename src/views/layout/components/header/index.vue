@@ -4,9 +4,9 @@
     <div class="flex items-center">
       <img 
       @click="onToHome"
-      class="mr-2 h-4 cursor-pointer"
+      class="mr-2 h-4 cursor-pointer guide-home"
       src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png" alt="">
-      <header-search-vue class="mr-1 flex-1"></header-search-vue>
+      <header-search-vue class="mr-1 flex-1 guide-search"></header-search-vue>
       <header-theme-vue class="mr-1"></header-theme-vue>
       <header-my-vue></header-my-vue>
     </div>
