@@ -8,6 +8,7 @@ import 'virtual:svg-icons-register'
 import store from './store'
 import useTheme from './utils/theme'
 import mDerectives from './directives'
+import './permission.js'
 
 
 createApp(App).use(mLibs).use(mDerectives).use(router).use(store).mount('#app')

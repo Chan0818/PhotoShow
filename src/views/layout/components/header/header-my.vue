@@ -93,6 +93,7 @@ const onToLogin = () => {
   //   router.push(path)
   //   return
   // }
+  if(item.id ===0 ) { router.push('/profile') }
   if(item.id === 2){
   // 无路径则为退出登录
   confirm('您确定要退出登录吗？').then(() => {
