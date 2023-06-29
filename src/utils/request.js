@@ -15,7 +15,6 @@ service.interceptors.request.use(
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // 必须返回 config
-    console.log(config)
     return config 
   },(error) =>{
     return Promise.reject(error)

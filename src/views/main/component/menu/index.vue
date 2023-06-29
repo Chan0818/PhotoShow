@@ -15,12 +15,6 @@
 </template>
 
 <script setup>
-defineProps({
-    categorys:{
-        type:Array,
-        required:true
-    }
-})
 
 </script>
 <style scoped lang='scss'>

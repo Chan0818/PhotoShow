@@ -19,9 +19,12 @@ import headerSearchVue from './header-search/index.vue'
 import headerThemeVue from './header-theme.vue'
 import headerMyVue from './header-my.vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
 
 const router = useRouter()
 const onToHome = ()=>{
+  store.commit('app/changeRouterType','push')
   router.push('/')
 }
 

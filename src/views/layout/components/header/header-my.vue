@@ -6,10 +6,7 @@
         class="guide-my relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100 dark:hover:bg-zinc-900"
       >
         <!-- 头像 -->
-        <img
-          class="w-3 h-3 rounded-sm"
-          :src="$store.getters.userInfo.avatar"
-        />
+        <img class="w-3 h-3 rounded-sm" :src="$store.getters.userInfo.avatar" />
         <!-- 下箭头 -->
         <m-svg-icon
           class="h-1.5 w-1.5 ml-0.5"
@@ -45,17 +42,18 @@
           class="w-1.5 h-1.5 mr-1"
           fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
-        <span class="text-zinc-800 text-sm dark:text-zinc-300">{{ item.title }}</span>
+        <span class="text-zinc-800 text-sm dark:text-zinc-300">{{
+          item.title
+        }}</span>
       </div>
     </div>
   </m-popover>
 </template>
 
-
 <script setup>
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
-import {confirm} from '@/libs'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import { confirm } from '@/libs'
 const store = useStore()
 
 const router = useRouter()
@@ -82,28 +80,30 @@ const menuArr = [
 ]
 // 进入登录
 const onToLogin = () => {
+  store.commit('app/changeRouterType','push')
   router.push('/login')
 }
 /**
  * menu Item 点击事件，也可以根据其他的 key 作为判定，比如 name
  */
- const onItemClick = (item) => {
+const onItemClick = (item) => {
   // 有路径则进行路径跳转
   // if (path) {
   //   router.push(path)
   //   return
   // }
-  if(item.id ===0 ) { router.push('/profile') }
-  if(item.id === 2){
-  // 无路径则为退出登录
-  confirm('您确定要退出登录吗？').then(() => {
-    // 退出登录不存在跳转路径
-    store.dispatch('user/logout')
-  })}
+  if (item.id === 0) {
+    store.commit('app/changeRouterType','push')
+    router.push('/profile')
+  }
+  if (item.id === 2) {
+    // 无路径则为退出登录
+    confirm('您确定要退出登录吗？').then(() => {
+      // 退出登录不存在跳转路径
+      store.dispatch('user/logout')
+    })
+  }
 }
-
-
 </script>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>

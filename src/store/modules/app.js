@@ -6,7 +6,7 @@ export default {
     // 当前选中的分类(对象)
     currentCategory: ALL_CATEGORY_ITEM,
     //搜索文本
-    searchText:''
+    searchText: ''
   }),
   mutations: {
     /**
@@ -18,8 +18,14 @@ export default {
     /**
      * 修改searchText
      */
-    changeSearchText(state,newSearchText){
+    changeSearchText(state, newSearchText) {
       state.searchText = newSearchText
+    },
+    /**
+     * 修改 routerType
+     */
+    changeRouterType(state, newType) {
+      state.routerType = newType
     }
   }
 }

@@ -128,6 +128,7 @@ const onLogin = async()=>{
   } finally {
     loading.value = false
   }
+  store.commit('app/changeRouterType','push')
   router.push('/')
 }
 
@@ -140,6 +141,7 @@ const loginForm = ref({
  * 去注册
  */
 const onToReg = ()=>{
+  store.commit('app/changeRouterType','push')
   router.push('/register')
 }
 
