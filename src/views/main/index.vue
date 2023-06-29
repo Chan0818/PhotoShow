@@ -38,7 +38,11 @@
   </div>
   <!-- <div>我是main下的布局</div> -->
 </template>
-
+<script>
+  export default {
+    name:'home'
+  }
+</script>
 <script setup>
 import navigationVue from './component/navigation/index.vue'
 import listVue from './component/list/index.vue'
